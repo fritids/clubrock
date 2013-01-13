@@ -1,109 +1,114 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-<meta charset="utf-8">
-<title>Formulaire d'inscription</title>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Formulaire d'inscription</title>
 
-<link href="inscription.css" rel="stylesheet" type="text/css">
-<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-</head>
+    <link href="inscription.css" rel="stylesheet" type="text/css"/>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  </head>
 
-<body>
+  <body>
 
-<hgroup>
-<h1>Formulaire d'inscription</h1>
-</hgroup>
+    <hgroup>
+      <h1>Formulaire d'inscription</h1>
+    </hgroup>
 
-<form action="ajouter_membre.php" method="post" enctype="multipart/form-data">
+    <form action="ajouter_membre.php" method="post" enctype="multipart/form-data">
 
-<fieldset>
-<legend>Veuillez remplir les champs suivants</legend><br />
+      <fieldset>
+	<legend>Veuillez remplir les champs suivants</legend><br />
 
-<label>Nom <input name="nom" required autofocus/></label><br/>
+	<label>Nom <input name="nom" required="required" autofocus="autofocus"/></label><br/>
 
-<label>Prénom<input name="prenom"  required/></label><br/>
+	<label>Prénom<input name="prenom"  required="required"/></label><br/>
 
-<label>Pseudo<input name="pseudo" required/><br/>
+	<label>Pseudo<input name="pseudo" required="required"/></label><br/>
 
-<label>Mot de passe <input name="mot_de_passe" type="password" placeholder="entrez un mot de passe d'au moins 8 caractères" required><br/>
+	<label>Mot de passe <input name="mot_de_passe" type="password" placeholder="entrez un mot de passe d'au moins 8 caractères"  pattern="[A-Za-z1-9]{8}[A-Za-z1-9]*" required="required"  /> <br/> </label>
 
-<label>Photo de profil<input name="photo" type="file"/></label>
-<input type="submit" value="Envoyer ma photo"/><br/>
+	<label>Photo de profil<input name="photo" type="file"/></label>
 
-<label>E-mail<input name="mail" type="email" required/></label><br/>
+	<input type="submit" value="Envoyer ma photo"/><br/>
 
-<label>Confirmez l'adresse e-mail<input type="email" name="email_addr_repeat" oninput="check(this)"></label><br/>
+	<label>E-mail<input name="mail" type="email" required="required"/></label><br/>
 
-<label>Téléphone<input name="telephone" type="tel" pattern="0[6-7] [0-9][0-9] [0-9][0-9] [0-9][0-9] [0-9][0-9]"  placeholder="00 00 00 00 00" /></label><br/>
+	<label>Confirmez l'adresse e-mail <input type="email" name="email_addr_repeat" oninput="check(this)"/></label><br/>
 
-<label>Statut <input name="statut_ENS" type="text" placeholder="normalien, auditeur, extérieur" required/></label><br/>
+	<label>Téléphone<input name="telephone" type="tel" pattern="0[6-7] [0-9][0-9] [0-9][0-9] [0-9][0-9] [0-9][0-9]"  placeholder="00 00 00 00 00" /></label><br/>
 
-<label>Inscrit(e) au BDE<input name="BDE" type="radio" value="oui"/>Oui<input name="BDE" type="radio" value="non"/>Non</label><br/>
+	<label> Statut 
+	<select name="statut_ENS"> 
+	  <option value="auditeur"> Auditeur </option>
+	  <option value="normalien"> Normalien </option>
+	  <option value="exterieur"> Exterieur </option>
+	</select>
+	</label> <br/>
+	
+	<label>Inscrit(e) au BDE ?<input name="BDE" type="radio" value="oui"/>Oui<input name="BDE" type="radio" value="non"/>Non</label><br/>
 
-<label>Inscription à la liste de diffusion ?<input name="list_diff" type="radio" value="oui"/>Oui<input name="list_diff" type="radio" value="non"/>Non</label><br/>
-</fieldset>
+	<label> Inscription à la liste de diffusion ?
+	<input name="list_diff" type="radio" value="oui"/> Oui <input name="list_diff" type="radio" value="non"/> Non </label> <br/>
+      </fieldset>
 
-<fieldset>
-<legend>Choix des cours de danse</legend><br/>
+      <fieldset>
+	<legend> Quelles danses pratiquez-vous ? </legend><br/>
 
-<label>Rock<input name="rock" type="checkbox"/>
-<label>Niveau :</label>
-<select name="niveau">
-	<option name="null"> </option>
-	<option name="débutant">Débutant</option>
-	<option name="intermediaire">Intermédiaire</option>
-	<option name="avance">Avancé</option>
-</select>
-</label><br/>
+	<!-- Pour les niveaux de danse on peut opter pour des menus déroulants -->
+	<!-- Erreur dans la version précédente : un élément <option> n'a pas d'attribut name, mais un attribut value qui indique la valeur transmise en POST si cet élément est choisi -->
+	<!-- La variable $_POST['rock'] que transmettra le formulaire aura donc l'une des valeurs 'null' 'debutant' 'intermédiaire' 'avance' -->
 
-<label>Salsa<input name="salsa" type="checkbox"/>
-<label>Niveau :</label>
-<select name="niveau">
-	<option name="null"> </option>
-	<option name="débutant">Débutant</option>
-	<option name="intermediaire">Intermédiaire</option>
-	<option name="avance">Avancé</option>
-</select>
-</label><br/>
+	<label for="rock">Rock </label>
+	<select name="rock">
+	  <option value="null"> Pas encore </option>
+	  <option value="debutant"> Débutant </option>
+	  <option value="intermediaire">Intermédiaire</option>
+	  <option value="avance"> Avancé </option>
+	  </select> <br/>
 
-<label>West Coast<input name="west_coast" type="checkbox" />
-<label>Niveau :</label>
-<select name="niveau">
-	<option name="null"> </option>
-	<option name="débutant">Débutant</option>
-	<option name="intermediaire">Intermédiaire</option>
-	<option name="avance">Avancé</option>
-</select>
-</label><br/>
+	  <label for="salsa"> Salsa </label>
+	  <select name="salsa">
+	    <option value="null"> Pas encore </option>
+	    <option value="debutant"> Débutant </option>
+	    <option value="intermediaire">Intermédiaire</option>
+	    <option value="avance"> Avancé </option>
+	    </select> <br/>
 
-<label>Danse de Salon<input name="danse_de_salon" type="checkbox"/>
-<label>Niveau :</label>
-<select name="niveau">
-	<option name="null"> </option>
-	<option name="débutant">Débutant</option>
-	<option name="intermediaire">Intermédiaire</option>
-	<option name="avance">Avancé</option>
-</select>
-</label><br/>
-</fieldset>
+	    <label for="danses_de_salon"> Danses de salon </label>
+	    <select name="danses_de_salon">
+	      <option value="null"> Pas encore </option>
+	      <option value="debutant"> Débutant </option>
+	      <option value="intermediaire">Intermédiaire</option>
+	      <option value="avance"> Avancé </option>
+	      </select> <br/>
 
+	      <label for="west-coast"> West Coast Swing </label>
+	      <select name="west_coast">
+		<option value="null"> Pas encore </option>
+		<option value="debutant"> Débutant </option>
+		<option value="intermediaire">Intermédiaire</option>
+		<option value="avance"> Avancé </option>
+		</select> <br/>
 
-<script>
-function check(input) {
-  if (input.value != document.getElementById('email_addr').value) {
-    input.setCustomValidity('Les deux adresses e-mail doivent correspondre');
-  } else {
-    // input is valid -- reset the error message
-    input.setCustomValidity('');
-  }
-}
-</script>
+      </fieldset>
 
 
-<input type="submit" value="Créer mon profil" name="validation" />
+      <script>
+	function check(input) {
+	if (input.value != document.getElementById('email_addr').value) {
+	input.setCustomValidity('Les deux adresses e-mail doivent correspondre');
+	} else {
+	// input is valid -- reset the error message
+	input.setCustomValidity('');
+	}
+	}
+      </script>
 
-</form>
 
-</body>
+      <input type="submit" value="Créer mon profil" name="validation" />
+
+    </form>
+
+  </body>
 </html>
