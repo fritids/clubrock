@@ -36,7 +36,7 @@ if ($_FILES["photo"]["type"] == "image/jpeg")
 
 <img alt="" src="avatars/<?php echo $avatar_name ; ?>" />     
 <?php 
-echo $_POST['nom'].'<br/>'; echo $width; echo $height.'<br/>'; echo $new_width.'</br>' ; echo $new_height.'<br/>'; echo $ratio ; ?>
+echo $_POST['nom'].'<br/>';// echo $width; echo $height.'<br/>'; echo $new_width.'</br>' ; echo $new_height.'<br/>'; echo $ratio ; ?>
     
 <?php 
     }
