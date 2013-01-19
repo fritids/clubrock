@@ -29,9 +29,7 @@
 	<label>Mot de passe <input name="mdp" type="password" placeholder="entrez un mot de passe d'au moins 8 caractères"  pattern="[A-Za-z1-9]{8}[A-Za-z1-9]*" required="required"  /> <br/> </label>
 
 	<label>Photo de profil<input name="photo" type="file"/></label>
-
-	<input type="submit" value="Envoyer ma photo"/><br/>
-
+	
 	<label>E-mail<input name="mail" type="email" required="required"/></label><br/>
 
 	<label>Confirmez l'adresse e-mail <input type="email" name="email_addr_repeat" oninput="check(this)"/></label><br/>
@@ -60,7 +58,7 @@
 	<!-- Pour les niveaux de danse on peut opter pour des menus déroulants -->
 	<!-- Erreur dans la version précédente : un élément <option> n'a pas d'attribut name, mais un attribut value qui indique la valeur transmise en POST si cet élément est choisi -->
 	<!-- La variable $_POST['rock'] que transmettra le formulaire aura donc l'une des valeurs 'null' 'debutant' 'intermédiaire' 'avance' -->
-
+	
 	<label for="rock">Rock </label>
 	<select name="rock">
 	  <option value="nul"> Pas encore </option>
@@ -68,7 +66,7 @@
 	  <option value="inter">Intermédiaire</option>
 	  <option value="av"> Avancé </option>
 	  </select> <br/>
-
+	  
 	  <label for="salsa"> Salsa </label>
 	  <select name="salsa">
 	    <option value="nul"> Pas encore </option>

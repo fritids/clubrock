@@ -1,32 +1,46 @@
+/* Creation d'une base de données qui regroupera toutes les tables du site */
+
 CREATE DATABASE clubrock ; 
+
+/*Creation d'un utilisateur ayant tous les droits sur les tables de cette base */
+
+CREATE USER "clubrock_admin"@"localhost";
+SET password FOR "clubrock_admin"@"localhost" = password('chachacha') ;
+GRANT ALL ON clubrock.* TO  "clubrock_admin"@"localhost" ;
+
+/*Creation des tables */
+
 USE DATABASE clubrock ;
 
-CREATE TABLE membres ( 
+CREATE TABLE clubrock_membres ( 
 uid INT UNSIGNED NOT NULL AUTO_INCREMENT,
 nom varchar(20), 
 prenom varchar(20),
 pseudo varchar(20),
-maill varchar(20),
+mail varchar(50),
 mdp varchar (20),
-telephone varchar (10),
-statut_ens varchar (20), /* auditeur exterieur personnel eleve doctorant */
-statut_bde varchar (1), /* 1 ou NULL */
-paiement_s1 varchar (2), /* ok ou NULL */
-paiement_s2 varchar (2), /* idem */
-rock varchar (4) , /* deb, inter, av */
-salsa varchar (4), /* idem */
-west_coast varchar(4),
-salon varchar (4),
-liste_diffusion char(1), /* 1 si le demande est faite, NULL sinon */
+telephone varchar (20),
+statut_ens enum ('auditeur','exterieur','personnel','doctorant','eleve'), 
+statut_bde enum ('1','0'), 
+paiement_s1 enum ('1','0'),
+paiement_s2 enum ('1','0'), /* idem */
+rock enum ('deb','inter','av','nul') , /* deb, inter, av */
+salsa enum ('deb','inter','av','nul') , /* idem */
+west_coast enum ('deb','inter','av','nul'),
+salon enum ('deb','inter','av','nul'),
+liste_diffusion enum ('1','0'), 
 date_creation date , /* Préciser le format */
 date_maj date,
-photo varchar(20),  /* Préciser le format */ 
+photo varchar(20), 
 PRIMARY KEY ( uid ) ) ;
-
-/* Il manque la photo ... */
 
 
 /* Pour vérifier que tout est bien */
 
 SHOW tables ;
-DESCRIBE membres ;
+DESCRIBE clubrock_membres ;
+
+/* Creation d'une table pour faire des tests */
+
+CREATE TABLE test ( nom varchar(50), mdp varchar(10) ) ;
+
