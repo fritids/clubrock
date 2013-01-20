@@ -18,12 +18,12 @@ nom varchar(20),
 prenom varchar(20),
 pseudo varchar(20),
 mail varchar(50),
-mdp varchar (20),
+mdp varchar (50),
 telephone varchar (20),
 statut_ens enum ('auditeur','exterieur','personnel','doctorant','eleve'), 
 statut_bde enum ('1','0'), 
-paiement_s1 enum ('1','0'),
-paiement_s2 enum ('1','0'), /* idem */
+paiement_s1 enum ('1','0') default '0',
+paiement_s2 enum ('1','0') default '0', /* idem */
 rock enum ('deb','inter','av','nul') , /* deb, inter, av */
 salsa enum ('deb','inter','av','nul') , /* idem */
 west_coast enum ('deb','inter','av','nul'),
