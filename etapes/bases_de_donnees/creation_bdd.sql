@@ -34,6 +34,21 @@ date_maj date,
 photo varchar(20), 
 PRIMARY KEY ( uid ) ) ;
 
+/* Table des billets */ 
+
+CREATE TABLE clubrock_billets (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+date_publication date, /* CURDATE() -> date courante */
+titre varchar (255),
+categorie enum('organisation', 'stage', 'sortie', 'info', 'projecteur'),
+resume BLOB,
+contenu BLOB,
+image varchar(255),
+statut enum('brouillon', 'publie'));
+
+
+
 
 /* Pour vérifier que tout est bien */
 

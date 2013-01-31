@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> Ecrire un billet </title>
+  </head>
+  <body>
+    <h1> Ecrire un nouveau billet </h1>
+    
+<form enctype="multipart/form-data" action="enregistre_billet.php" method="post">
+  <label> Titre : <input type="text" name="titre" /> </label>
+  
+  <label> Catégorie 
+  <select name="categorie">
+    <option value="organisation" />
+    <option value="stage" />
+    <option value="sortie" />
+    <option value="info" />
+    <option value="projecteur"/>
+  </select>
+  </label>
+
+  <label> Resume : <textarea name="resume" /> </label>
+  
+  <label> Billet <textarea name="contenu" /> </label>
+  
+  <label> Image <input type="file" name="image" /> </label>
+
+</form>
+
+  </body>
+</html>
